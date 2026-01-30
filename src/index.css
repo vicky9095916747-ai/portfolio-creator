@@ -7,3 +7,44 @@
     @apply antialiased text-gray-900 bg-gray-50;
   }
 }
+
+@media print {
+
+  /* HIDE EVERYTHING IN THE BODY */
+  body * {
+    visibility: hidden;
+  }
+
+  /* SHOW ONLY THE PRINTABLE CONTENT */
+  #printable-content,
+  #printable-content * {
+    visibility: visible;
+  }
+
+  /* POSITION IT AT THE TOP LEFT */
+  #printable-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Ensure background colors print (e.g. for Creative Theme) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide scrollbars during print */
+  html,
+  body {
+    height: auto;
+    overflow: visible !important;
+  }
+}

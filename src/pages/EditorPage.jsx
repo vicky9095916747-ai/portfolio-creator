@@ -21,7 +21,9 @@ const EditorPage = () => {
     ];
 
     const handlePrint = () => {
-        window.print();
+        import('../utils/printHelper').then(module => {
+            module.printElement('printable-content');
+        });
     };
 
     return (
@@ -99,7 +101,7 @@ const EditorPage = () => {
 
                 {/* Iframe-like container for isolation/styling context */}
                 <div className="flex-1 overflow-y-auto bg-gray-300 p-0 md:p-8">
-                    <div className="bg-white min-h-[calc(100vh-100px)] shadow-2xl mx-auto rounded-none md:rounded-lg overflow-hidden max-w-[1200px] print:m-0 print:shadow-none print:w-full print:max-w-none">
+                    <div id="printable-content" className="bg-white min-h-[calc(100vh-100px)] shadow-2xl mx-auto rounded-none md:rounded-lg overflow-hidden max-w-[1200px] print:m-0 print:shadow-none print:w-full print:max-w-none">
                         <ThemeRenderer />
                     </div>
                 </div>
